@@ -1,0 +1,17 @@
+#BSUB-J {{ job_name }}[1-{{ n_jobs }}]
+#BSUB-n {{ cores | 1 }}
+#BSUB-o {{ log_file | /dev/null }}
+#BSUB-M {{ memory | 4096 }}
+#BSUB-R rusage[mem={{ memory | 4096  }}]
+#BSUB-R span[ptile=1]
+#BSUB-q condo_uma_leontine_alkema
+#BSUB-W 6:00
+
+module load R/4.0.0_gcc
+module load cairo/1.12.16
+module load pandoc/2.7.2
+module load zeromq/4.1.4
+
+##ulimit -v $(( 1024 * {{ memory | 4096 }} ))
+
+CMQ_AUTH={{ auth }} R --no-save --no-restore -e 'clustermq:::worker("{{ master }}")'

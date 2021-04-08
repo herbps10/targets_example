@@ -9,6 +9,7 @@ create_plot <- function(data) {
 }
 
 fit_model <- function(data) {
+  options(mc.cores = 4)
   stan_lmer(lifeExp ~ year + scale(gdpPercap) + (1 | continent), data = data)
 }
 

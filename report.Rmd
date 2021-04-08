@@ -3,10 +3,10 @@ title: "Report"
 output: html_document
 ---
 
-```{r setup, include = FALSE}
+```{r setup, include = FALSE, dev="CairoPNG"}
 library(targets)
 
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG")
 options(tidyverse.quiet = TRUE)
 ```
 
