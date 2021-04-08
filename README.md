@@ -26,6 +26,21 @@ tar_watch(targets_only = TRUE)
 # Computing cluster
 Instructions for getting a computing environment set up on the cluster and how to run `targets` pipelines in parallel.
 
+I recommend installing packages on a compute node interactively. Request an interactive session on a compute node by running:
+```
+> bsub -q condo_grid -W 8:00 -R rusage[mem=4096] -Is /bin/bash
+```
+When the session loads, load `R` and a `g++`:
+```
+module load R/4.0.0_gcc
+module load g++/8.1.0
+```
+
+Then you can start an R session and install your packages as you normally would.
+```
+> R
+```
+
 ## Installing R packages
 Installing some R packages require additional steps.
 ### Installing `rstan`
