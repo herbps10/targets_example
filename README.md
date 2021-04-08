@@ -2,6 +2,8 @@
 
 This is a template project for setting up analysis pipelines using `targets`. The project also includes configurations for running it on the UMass computing cluster.
 
+In this README, code to be run in the shell are prefixed with `>`, and all other commands are to be run in `R`.
+
 To run the pipeline, open an R session in the project root and run:
 ```
 library(targets)
@@ -32,8 +34,8 @@ I recommend installing packages on a compute node interactively. Request an inte
 ```
 When the session loads, load `R` and a `g++`:
 ```
-module load R/4.0.0_gcc
-module load g++/8.1.0
+> module load R/4.0.0_gcc
+> module load g++/8.1.0
 ```
 
 Then you can start an R session and install your packages as you normally would.
