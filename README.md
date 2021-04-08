@@ -67,3 +67,14 @@ Then install `cmdstanr`:
 install.packages("cmdstanr")
 cmdstanr::install_cmdstan()
 ```
+
+## Configuration
+You can edit the `clustermq.lfs` file to change the queue to use or the default number of cores and memory per compute node (currently set to 4 cores with 4GB of memory each.)
+
+## Running
+To run your pipeline on the cluster, open an R session in the project root on the login node and run:
+```
+library(targets)
+tar_make_clustermq(workers = 2)
+```
+You can change `workers=2` to be however many compute nodes you want to use.
