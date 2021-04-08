@@ -1,0 +1,21 @@
+---
+title: "Report"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(targets)
+
+knitr::opts_chunk$set(echo = TRUE)
+options(tidyverse.quiet = TRUE)
+```
+
+```{r}
+tar_load(life_exp_plot)
+life_exp_plot
+```
+
+```{r}
+tar_load(posterior_plot)
+posterior_plot
+```
