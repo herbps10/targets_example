@@ -1,11 +1,12 @@
 #BSUB-J {{ job_name }}[1-{{ n_jobs }}]
-#BSUB-n {{ cores | 1 }}
+#BSUB-n {{ cores | 4 }}
 #BSUB-o {{ log_file | /dev/null }}
 #BSUB-M {{ memory | 4096 }}
-#BSUB-R rusage[mem={{ memory | 4096  }}]
-#BSUB-R span[ptile=1]
+#BSUB-R rusage[mem={{ memory | 4096 }}]
 #BSUB-q condo_uma_leontine_alkema
-#BSUB-W 6:00
+#BSUB-W {{ walltime | 6:00 }}
+#BSUB-R span[ptile=1]
+
 
 module load R/4.0.0_gcc
 module load cairo/1.12.16
