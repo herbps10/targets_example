@@ -10,6 +10,12 @@ library(targets)
 tar_make()
 ```
 
+You can run the pipeline in parallel on a single computer (using multiple processors or cores) by running:
+```
+tar_make_future(workers = 2)
+```
+which will launch 2 worker processes. Each one of those processes can itself be multithreaded, so the total number of cores in use might be higher. In this template, the `fit1` and `fit2` targets will both use 4 cores each to fit the `rstanarm` models.
+
 To check on progress, you can open a separate R session in the project root and run:
 ```
 tar_progress()
@@ -26,7 +32,7 @@ tar_watch(targets_only = TRUE)
 ```
 
 # Computing cluster
-Instructions for getting a computing environment set up on the cluster and how to run `targets` pipelines in parallel.
+Below are instructions for getting a computing environment set up on the cluster and for how to run `targets` pipelines in parallel.
 
 I recommend installing packages on a compute node interactively. Request an interactive session on a compute node by running:
 ```
@@ -68,13 +74,10 @@ install.packages("cmdstanr")
 cmdstanr::install_cmdstan()
 ```
 
-## Configuration
-You can edit the `clustermq.lfs` file to change the queue to use or the default number of cores and memory per compute node (currently set to 4 cores with 4GB of memory each.)
-
 ## Running
 To run your pipeline on the cluster, open an R session in the project root on the login node and run:
 ```
 library(targets)
 tar_make_clustermq(workers = 2)
 ```
-You can change `workers=2` to be however many compute nodes you want to use.
+Change `workers=2` to be however many compute nodes you want to use.
