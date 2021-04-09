@@ -10,12 +10,21 @@ knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG")
 options(tidyverse.quiet = TRUE)
 ```
 
+# EDA
 ```{r}
 tar_load(life_exp_plot)
 life_exp_plot
 ```
 
+# Modeling results
+## Model 1
 ```{r}
-tar_load(posterior_plot)
-posterior_plot
+tar_load(posterior_plot1)
+posterior_plot1
+```
+
+## Model 2
+```{r}
+tar_load(posterior_plot2)
+posterior_plot2
 ```

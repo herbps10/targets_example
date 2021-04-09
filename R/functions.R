@@ -8,11 +8,16 @@ eda_plot <- function(data) {
     facet_wrap(~continent)
 }
 
-fit_model <- function(data) {
+fit_model1 <- function(data) {
   options(mc.cores = 4)
-  stan_lmer(lifeExp ~ year + scale(gdpPercap) + (1 | continent), data = data)
+  stan_lmer(lifeExp ~ year + log10(gdpPercap) + log10(pop) + (1 | continent), data = data)
+}
+
+fit_model2 <- function(data) {
+  options(mc.cores = 4)
+  stan_lmer(lifeExp ~ year + scale(gdpPercap) + scale(pop) + (1 | continent), data = data)
 }
 
 posterior_plot <- function(fit) {
-  bayesplot::mcmc_dens(fit, c("year", "scale(gdpPercap)"))
+  bayesplot::mcmc_dens(fit, regex_pars = c("year", "gdpPercap", "pop"))
 }
